@@ -17,6 +17,16 @@
     "trello-e2e": {
       "tags": [],
       "implicitDependencies": ["trello"]
+    },
+    "ui": {
+      "tags": []
+    },
+    "my-app": {
+      "tags": []
+    },
+    "my-app-e2e": {
+      "tags": [],
+      "implicitDependencies": ["my-app"]
     }
   }
 }

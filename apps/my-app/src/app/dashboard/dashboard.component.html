@@ -1,0 +1,25 @@
+<mat-accordion>
+    <mat-expansion-panel [expanded]="panelOpenState" (opened)="panelOpenState = true" [disabled]="panelOpenState" hideToggle>
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+        <p *ngIf="!panelOpenState">Create a new board...</p>
+        <p *ngIf="panelOpenState">Creating a board</p>
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>What shall we call the board?</p>
+    <mat-form-field>
+        <input [(ngModel)]="boardName" matInput (keydown.enter)="createNewBoard()"/>
+        <span *ngIf="boardNameRequired">Oops! Looks like you forgot the name!</span>
+    </mat-form-field>
+    <mat-action-row>
+        <button mat-button color="warn" (click)="cancelCreateBoard()" >Cancel</button>
+        <button mat-button color="primary" (click)="createNewBoard()">Create</button>
+    </mat-action-row>
+    </mat-expansion-panel>
+</mat-accordion>
+
+<mat-card *ngFor="let board of boards; index as i">
+    <mat-card-header [routerLink]="['/boards', i]">
+        <mat-card-title>{{ board.boardName }}</mat-card-title>
+    </mat-card-header>
+</mat-card>

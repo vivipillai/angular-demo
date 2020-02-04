@@ -1,0 +1,15 @@
+<mat-card class="board-list">
+    <mat-card-header>
+        <mat-card-title>{{boardList.listName}}</mat-card-title>
+        
+        <mat-form-field>
+            <input #taskName [(ngModel)]="newTaskName" matInput (keydown.enter)="addTask(boardList, taskName.value)"/>
+        </mat-form-field>
+
+        <section class="task-section" *ngFor="let task of boardList.tasks;" [class.task-cancelled]="!task.taskActive">
+            <mat-checkbox class="task-check" [(ngModel)]="task.taskActive" [labelPosition]="'before'">
+              {{task.taskName}}
+            </mat-checkbox>
+        </section>
+    </mat-card-header>
+</mat-card>
