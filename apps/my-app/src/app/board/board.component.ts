@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Boards, BoardLists, ListTasks } from '../dashboard/dashboard.type';
+import { Boards, BoardLists, ListTasks } from '../dashboard/dashboard';
+import { DashboardService } from '../dashboard/dashboard.service';
 
 @Component({
   selector: 'myworkspace-board',
@@ -11,17 +12,28 @@ export class BoardComponent implements OnInit {
   public board: Boards;
   public closeAddNew: Boolean;
   public newListName: String;
+  public boards: Boards[];
+  errorMessage: string;
 
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private dashboardService: DashboardService
   ) {}
 
   ngOnInit() {
     this.closeAddNew = false;
     this.newListName = "";
-    const boards = JSON.parse(localStorage.getItem("boards"));
+    
+
     this.route.paramMap.subscribe(params => {
-      this.board = boards[params.get('boardIndex')];
+      
+    this.dashboardService.getBoards().subscribe(
+      (boards: Boards[]) => {
+        this.boards = boards;
+        this.board = this.boards[params.get('boardIndex')];
+      },
+      (err: any) => this.errorMessage = err.error
+    );
     });
   }
 

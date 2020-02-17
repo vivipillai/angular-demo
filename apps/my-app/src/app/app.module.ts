@@ -1,5 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+
+// Imports for loading & configuring the in-memory web api
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { BoardsData } from './dashboard/dashboard-data';
+
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
@@ -15,12 +21,18 @@ import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { TaskboardComponent } from './taskboard/taskboard.component';
 
+/* NgRx */
+import { StoreModule } from '@ngrx/store';
+
 @NgModule({
   declarations: [AppComponent, DashboardComponent, BoardComponent, TaskboardComponent],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(BoardsData),
     FormsModule,
     AppRoutingModule,
+    StoreModule.forRoot({}),
     BrowserAnimationsModule,
     MatExpansionModule,
     MatInputModule,

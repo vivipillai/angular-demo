@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Boards } from './dashboard.type';
+import { DashboardService } from './dashboard.service';
+import { Boards } from './dashboard';
 
 @Component({
   selector: 'myworkspace-dashboard',
@@ -13,14 +14,20 @@ export class DashboardComponent implements OnInit {
   public boardName: string;
   public boardNameRequired: boolean;
   public boards: Boards[];
+  errorMessage: string;
 
-  constructor() {}
+  constructor(private dashboardService: DashboardService) { }
 
   ngOnInit() {
     this.panelOpenState = false;
     this.boardNameRequired = false;
     this.boardName = "";
     this.boards = [];
+    
+    this.dashboardService.getBoards().subscribe(
+      (boards: Boards[]) => this.boards = boards,
+      (err: any) => this.errorMessage = err.error
+    );
   }
 
   cancelCreateBoard(): void {
@@ -37,7 +44,6 @@ export class DashboardComponent implements OnInit {
       newBoard.boardName = this.boardName;
       newBoard.boardLists = [];
       this.boards.push(newBoard);
-      localStorage.setItem("boards", JSON.stringify(this.boards));
       this.cancelCreateBoard();
     }
   }

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { BoardLists, ListTasks } from '../dashboard/dashboard.type';
+import { BoardLists, ListTasks } from '../dashboard/dashboard';
 
 @Component({
   selector: 'myworkspace-taskboard',
