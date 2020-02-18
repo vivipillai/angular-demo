@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
 import { ActivatedRoute } from '@angular/router';
 import { Boards, BoardLists, ListTasks } from '../dashboard/dashboard';
-import { DashboardService } from '../dashboard/dashboard.service';
+import { AppState } from './../app.state';
 
 @Component({
   selector: 'myworkspace-board',
@@ -12,29 +14,23 @@ export class BoardComponent implements OnInit {
   public board: Boards;
   public closeAddNew: Boolean;
   public newListName: String;
-  public boards: Boards[];
-  errorMessage: string;
+  boards: Observable<Boards[]>;
+  currentIndex: number;
 
   constructor(
     private route: ActivatedRoute,
-    private dashboardService: DashboardService
-  ) {}
+    private store: Store<AppState>
+  ) {
+    route.paramMap.subscribe(params => {
+      this.currentIndex = parseInt(params.get('boardIndex'), 10);
+      this.store.select('boards').subscribe((data) => {
+        this.board = data[params.get('boardIndex')];
+      })
+    });}
 
   ngOnInit() {
     this.closeAddNew = false;
     this.newListName = "";
-    
-
-    this.route.paramMap.subscribe(params => {
-      
-    this.dashboardService.getBoards().subscribe(
-      (boards: Boards[]) => {
-        this.boards = boards;
-        this.board = this.boards[params.get('boardIndex')];
-      },
-      (err: any) => this.errorMessage = err.error
-    );
-    });
   }
 
   addListName(listName: string) {

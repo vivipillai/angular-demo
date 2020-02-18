@@ -18,7 +18,7 @@
     </mat-expansion-panel>
 </mat-accordion>
 
-<mat-card *ngFor="let board of boards; index as i">
+<mat-card *ngFor="let board of boards | async; index as i">
     <mat-card-header [routerLink]="['/boards', i]">
         <mat-card-title>{{ board.boardName }}</mat-card-title>
     </mat-card-header>

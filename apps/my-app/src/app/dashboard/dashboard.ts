@@ -3,7 +3,6 @@ export class Boards {
     boardLists: BoardLists[];
 }
 
-
 export class BoardLists {
     listName: string;
     tasks: ListTasks[];

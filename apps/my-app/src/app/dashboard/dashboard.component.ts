@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { DashboardService } from './dashboard.service';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
 import { Boards } from './dashboard';
+import { AppState } from './../app.state';
+import * as BoardActions from './dashboard.actions'
 
 @Component({
   selector: 'myworkspace-dashboard',
@@ -13,21 +16,17 @@ export class DashboardComponent implements OnInit {
   public panelOpenState: boolean;
   public boardName: string;
   public boardNameRequired: boolean;
-  public boards: Boards[];
   errorMessage: string;
+  boards: Observable<Boards[]>;
 
-  constructor(private dashboardService: DashboardService) { }
+  constructor(private store: Store<AppState>) {
+    this.boards = store.select('boards');
+  }
 
   ngOnInit() {
     this.panelOpenState = false;
     this.boardNameRequired = false;
-    this.boardName = "";
-    this.boards = [];
-    
-    this.dashboardService.getBoards().subscribe(
-      (boards: Boards[]) => this.boards = boards,
-      (err: any) => this.errorMessage = err.error
-    );
+    this.boardName = "";    
   }
 
   cancelCreateBoard(): void {
@@ -43,7 +42,7 @@ export class DashboardComponent implements OnInit {
       const newBoard = new Boards();
       newBoard.boardName = this.boardName;
       newBoard.boardLists = [];
-      this.boards.push(newBoard);
+      this.store.dispatch(new BoardActions.AddBoard(newBoard));
       this.cancelCreateBoard();
     }
   }
