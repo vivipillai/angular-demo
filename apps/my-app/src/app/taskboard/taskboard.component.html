@@ -2,7 +2,7 @@
     <mat-card-header>
         <mat-card-title>{{boardList.listName}}</mat-card-title>
         
-        <mat-form-field>
+        <mat-form-field appearance="none">
             <input #taskName [(ngModel)]="newTaskName" matInput (keydown.enter)="addTask(boardList, taskName.value)"/>
         </mat-form-field>
 

@@ -1,144 +1,115 @@
-.mat-card {
-    float: left;
-    cursor: pointer;
+.board-page {
+    padding: 0 20px;
+    .mat-card {
+        border: 0;
+        cursor: pointer;
+        float: left;
+        margin-right: 20px;
+        padding: 0;
 
-    .mat-card-header {
-        border-radius: 5.5px;
-        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-        color: #fff;
-        font-weight: bold;
-        font-size: 16px;
-        padding-top: 12px;
-        margin-top: 4px;
-        width: 345px;
-        height: 48px;
-      
-        .mat-form-field {
-            display: block;
-            width: 100%;
-        }
-
-        .mat-form-field-infix {
-            width: auto;
-        }
-
-        input {
-            background: #fff;
+        .mat-card-header {
             border-radius: 5.5px;
             box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-            padding: 5px 10px;
-            height: 45px;
-            color: black;
-        }
-    }
-}
-
-.board-name {
-    .mat-card-header {
-        background-color: #9fe7a4;
-    }
-}
-
-.task-list {
-    clear: both;
-    display: block;
-
-    .task-items {
-        display: inline-block;
-        float: left;
-    }
-
-    .board-list {
-        .mat-card-header {
-            background-color: #fff;
-            border-radius: 0;
-            color: black;
-            display: block;
-            height: auto;
-            padding-bottom: 12px;
-
+            color: #fff;
+            font-weight: bold;
+            font-size: 16px;
+            padding-top: 12px;
+            width: 345px;
+            height: 35px;
+        
             .mat-form-field {
-                border-top: 1px solid #ccc;
                 display: block;
-                padding: 20px;
                 width: 100%;
             }
 
-            .task-section {
-                background-color: #9fe7a4;
+            .mat-form-field-infix {
+                width: auto;
+            }
+
+            .mat-form-field-wrapper {
+                padding-bottom: 0;
+            }
+
+            input {
+                background: #fff;
                 border-radius: 5.5px;
                 box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-                color: #000;
-                font-weight: bold;
-                font-size: 16px;
-                margin: 10px 20px;
-                height: 48px;
-                padding: 13px 20px;
+                padding: 5px 10px;
+                height: 45px;
+                color: black;
+            }
+        }
+    }
+
+    .board-name {
+        .mat-card-header {
+            background-color: #9fe7a4;
+        }
+    }
+
+    .task-list {
+        clear: both;
+        display: block;
+        padding-top: 30px;
+
+        .task-items {
+            display: inline-block;
+            float: left;
+        }
+        
+        ::ng-deep .mat-card {
+            border: 0;
+            cursor: pointer;
+            float: left;
+            margin-right: 20px;
+            padding: 0;
+        }
+
+        .add-new-btn {
+            .mat-card-header {
+                background-color: #0a2c74;
+            }
+        }
+
+        .add-new {
+            cursor: initial;
+            .mat-card-header {
+                background-color: #fff;
+                border-radius: 0;
+                height: 100px;
+                padding: 0 20px;
 
                 ::ng-deep {
-                    .cdk-visually-hidden {
+                    .mat-card-header-text {
                         display: none;
                     }
-
-                    .mat-checkbox-frame {
-                        border-color: #fff;
-                    }
-
-                    .mat-checkbox-label {
-                        width: 240px;
+                    .mat-form-field-flex {
+                        width: 94%;
                     }
                 }
-
-                &.task-cancelled {
-                    background-color: #f3ecff;
-                    
-                    ::ng-deep .mat-checkbox-label {
-                        text-decoration: line-through;
-                    }
+                span {
+                    font-size: 12px;
+                    color: #000;
                 }
             }
-        }
-    }
-
-    .add-new-btn {
-        .mat-card-header {
-            background-color: #0a2c74;
-        }
-    }
-
-    .add-new {
-        cursor: initial;
-        .mat-card-header {
-            background-color: #fff;
-            border-radius: 0;
-            height: 100px;
-            padding: 20px;
-
-            ::ng-deep .mat-card-header-text {
-                display: none;
-            }
-
-            span {
-                font-size: 12px;
-                color: #000;
+            .close-icon {
+                position: absolute;
+                top: -28px;
+                right: -11px;
+                border: 2px solid #bdeec0;
+                border-radius: 16px;
+                color: #bdeec0;
+                cursor: pointer;
+                font-size: 14px;
+                font-weight: bold;
+                background: #fff;
+                width: 23px;
+                height: 20px;
+                overflow: visible;
+                text-align: center;
+                padding-top: 3px;
             }
         }
-        .close-icon {
-            position: absolute;
-            top: 8px;
-            right: 5px;
-            border: 2px solid #bdeec0;
-            border-radius: 16px;
-            color: #bdeec0;
-            cursor: pointer;
-            font-size: 12px;
-            font-weight: bold;
-            background: #fff;
-            width: 22px;
-            height: 22px;
-            overflow: visible;
-            text-align: center;
-        }
-    }
 
+    }
 }

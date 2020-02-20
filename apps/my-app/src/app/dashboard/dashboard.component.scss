@@ -5,14 +5,13 @@
         border-radius: 5.5px;
         box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
         cursor: pointer;
-        margin: 20px;
+        margin: 0 20px;
         transition: 200ms ease-in-out;
         -webkit-transition: 200ms ease-in-out;
         width: 345px;
         height: auto;
 
         .mat-expansion-panel-header-title {
-            padding-top: 15px;
 
             p {
                 font-weight: bold;
@@ -32,6 +31,10 @@
                 width: auto;
             }
 
+            .mat-form-field-flex {
+                width: 93%;
+            }
+
             p {
                 font-size: 16px;
                 color: #fff;
@@ -46,6 +49,7 @@
                 background: #fff;
                 border-radius: 5.5px;
                 box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+                margin-bottom: 5px;
                 padding: 5px 10px;
                 height: 30px;
             }
@@ -53,12 +57,19 @@
         .mat-action-row {
             border-top: 1px solid #fff;
         }
+
+        .mat-stroked-button {
+            background-color: #fff;
+        }
     }
 }
 
 .mat-card {
-    float: left;
+    border: 0;
     cursor: pointer;
+    float: left;
+    margin-right: 20px;
+    padding: 0;
 
     .mat-card-header {
         background: #fff;
@@ -67,9 +78,8 @@
         color: #000;
         font-weight: bold;
         font-size: 16px;
-        padding-top: 12px;
-        margin-top: 4px;
+        padding-top: 13px;
         width: 345px;
-        height: 48px;
+        height: 35px;
     }
 }

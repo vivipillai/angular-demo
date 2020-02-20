@@ -11,14 +11,12 @@
         font-weight: bold;
         font-size: 16px;
         padding-top: 12px;
-        margin-top: 4px;
         width: 345px;
         
         .mat-form-field {
             display: block;
-            width: 100%;
             border-top: 1px solid #ccc;
-            padding: 20px;
+            padding: 0 20px;
         }
 
         .mat-form-field-infix {
@@ -29,6 +27,10 @@
             color: #000;
         }
 
+        ::ng-deep .mat-form-field-wrapper {
+            padding-bottom: 0;
+        }
+
         input {
             background: #fff;
             border-radius: 5.5px;
@@ -36,6 +38,7 @@
             padding: 5px 10px;
             height: 45px;
             color: black;
+            width: 93%;
         }
 
         .task-section {
@@ -46,7 +49,6 @@
             font-weight: bold;
             font-size: 16px;
             margin: 10px 20px;
-            height: 48px;
             padding: 13px 20px;
 
             ::ng-deep {
@@ -60,6 +62,10 @@
 
                 .mat-checkbox-label {
                     width: 240px;
+                }
+
+                .mat-checkbox-background {
+                    background-color: transparent;
                 }
             }
 

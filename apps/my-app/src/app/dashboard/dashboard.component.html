@@ -7,13 +7,13 @@
         </mat-panel-title>
     </mat-expansion-panel-header>
     <p>What shall we call the board?</p>
-    <mat-form-field>
+    <mat-form-field appearance="none">
         <input [(ngModel)]="boardName" matInput (keydown.enter)="createNewBoard()"/>
         <span *ngIf="boardNameRequired">Oops! Looks like you forgot the name!</span>
     </mat-form-field>
     <mat-action-row>
         <button mat-button color="warn" (click)="cancelCreateBoard()" >Cancel</button>
-        <button mat-button color="primary" (click)="createNewBoard()">Create</button>
+        <button mat-stroked-button color="primary" (click)="createNewBoard()">Create</button>
     </mat-action-row>
     </mat-expansion-panel>
 </mat-accordion>

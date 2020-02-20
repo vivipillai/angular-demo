@@ -1,25 +1,27 @@
-<mat-card class="board-name">
-    <mat-card-header [routerLink]="['']">
-        <mat-card-title>{{board.boardName}}</mat-card-title>
-    </mat-card-header>
-</mat-card>
-<div class="task-list">
-    <section  class="task-items" *ngFor="let boardList of board.boardLists;">
-        <myworkspace-taskboard [boardList]="boardList"></myworkspace-taskboard>
-    </section>
-    <mat-card class="add-new-btn" *ngIf="closeAddNew" (click)="closeAddNew = false">
-        <mat-card-header>
-            <mat-card-title>Add a list...</mat-card-title>
+<div class="board-page">
+    <mat-card class="board-name">
+        <mat-card-header [routerLink]="['']">
+            <mat-card-title>{{board.boardName}}</mat-card-title>
         </mat-card-header>
     </mat-card>
+    <div class="task-list">
+        <section  class="task-items" *ngFor="let boardList of board.boardLists;">
+            <myworkspace-taskboard [boardList]="boardList"></myworkspace-taskboard>
+        </section>
+        <mat-card class="add-new-btn" *ngIf="closeAddNew" (click)="closeAddNew = false">
+            <mat-card-header>
+                <mat-card-title>Add a list...</mat-card-title>
+            </mat-card-header>
+        </mat-card>
 
-    <mat-card class="add-new" *ngIf="!closeAddNew">
-        <mat-card-header>
-            <mat-form-field>
-                <input [(ngModel)]="newListName" #listName matInput (keydown.enter)="addListName(listName.value)"/>
-                <span *ngIf="!newListName">Oops! Looks like you forgot the name!</span>
-            </mat-form-field>
-        </mat-card-header>
-        <p class="close-icon" (click)="closeAddNew = true">X</p>
-    </mat-card>
+        <mat-card class="add-new" *ngIf="!closeAddNew">
+            <mat-card-header>
+                <mat-form-field appearance="none">
+                    <input [(ngModel)]="newListName" #listName matInput (keydown.enter)="addListName(listName.value)" placeholder="Add a list..."/>
+                    <span *ngIf="!newListName">Oops! Looks like you forgot the name!</span>
+                </mat-form-field>
+            </mat-card-header>
+            <p class="close-icon" (click)="closeAddNew = true">X</p>
+        </mat-card>
+    </div>
 </div>
