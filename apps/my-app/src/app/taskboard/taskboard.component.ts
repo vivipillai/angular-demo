@@ -16,7 +16,6 @@ export class TaskboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.boardList);
     this.newTaskName = "";
   }
 

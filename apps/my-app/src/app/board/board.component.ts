@@ -19,7 +19,7 @@ export class BoardComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private store: Store<AppState>
+    public store: Store<AppState>
   ) {
     route.paramMap.subscribe(params => {
       this.currentIndex = parseInt(params.get('boardIndex'), 10);

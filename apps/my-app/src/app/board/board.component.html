@@ -5,7 +5,7 @@
         </mat-card-header>
     </mat-card>
     <div class="task-list">
-        <section  class="task-items" *ngFor="let boardList of board.boardLists;">
+        <section class="task-items" *ngFor="let boardList of board.boardLists;">
             <myworkspace-taskboard [boardList]="boardList"></myworkspace-taskboard>
         </section>
         <mat-card class="add-new-btn" *ngIf="closeAddNew" (click)="closeAddNew = false">
